@@ -47,7 +47,7 @@ The remaining process depends upon whether this is your first time building the 
 
 ### Preparing to Update
 
-If you are updating due to a kernel patch (or packaging) version update, you'll need to clean your working directory first [1](#note-to-ubuntu-users):
+If you are updating due to a kernel patch (or packaging) version update, you'll need to clean your working directory first [[1]](#note-to-ubuntu-users):
 
 ```bash
 make -C /lib/modules/$(uname -r)/build M=$(pwd) clean
@@ -57,7 +57,7 @@ Now you are ready to continue as if it is your first run through this process
 
 ### Build
 
-We start by copying some configuration to the working directory [1](#note-to-ubuntu-users):
+We start by copying some configuration to the working directory [[1]](#note-to-ubuntu-users):
 
 ```bash
 cp /lib/modules/$(uname -r)/build/.config ./
@@ -74,7 +74,7 @@ Great! You're ready to install.
 
 ### Install
 
-To install the firmware, copy the compiled kernel driver to the appropriate system path [1](#note-to-ubuntu-users):
+To install the firmware, copy the compiled kernel driver to the appropriate system path [[1]](#note-to-ubuntu-users):
 
 ```bash
 sudo cp ath.ko /lib/modules/$(uname -r)/kernel/drivers/net/wireless/ath
