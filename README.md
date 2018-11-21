@@ -20,8 +20,10 @@ Ensure you have all the required tools
 
 ```bash
 sudo apt-get update
-sudo apt-get install git build-essential
+sudo apt-get install git build-essential linux-headers-amd64
 ```
+
+(Or replace `linux-headers-amd64` with the appropriate version for your hardware.)
 
 ### Get the Source
 
