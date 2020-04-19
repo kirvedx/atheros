@@ -1,6 +1,8 @@
 # Atheros
 
-Atheros QCA6174 Wireless Firmware for Debian Buster (and probably Ubuntu). Kernel Versions 4.15 through 4.17 (Check out the appropriate Branches)
+Atheros QCA6174 Wireless Firmware for Debian Buster/Bullseye/Sid (and probably Ubuntu). 
+
+Fork of devrikx/atheros to support 5.X kernel versions. Check branches for kernels supported. Tested working on Samusng Galaxy Book w/kernel 5.5.0-1-amd64.
 
 **SPECIAL THANKS**
 
