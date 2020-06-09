@@ -2,21 +2,21 @@
 
 Atheros QCA6174 Wireless Firmware for Debian Buster/Bullseye/Sid (and probably Ubuntu).
 
-Master provides support for kernel version 5.3.
+Master provides support for kernel version 5.5.
 
-Check the branches for support of kernel versions 4.15 through 4.18 (Check out the appropriate branch).
+Check the branches for support of kernel versions 4.15 through 5.3 (Check out the appropriate branch).
 
 **SPECIAL THANKS**
 
 Special thanks to @jeremyb31 ([his profile on ubuntuforums](https://ubuntuforums.org/member.php?u=1924242)) for having provided the [modified source and instructions](https://ubuntuforums.org/showthread.php?t=2384640&page=4) on ubuntuforums for getting the Atheros QCA6174 Wireless working on Ubuntu/Debian linux in kernel versions 4.15 and 4.16.
 
-Special thanks to @waveletlet ([their profile on github](https://github.com/waveletlet)) for having provided the merge request to add support for changes made to the kernel sources in version [5.3](https://github.com/devrikx/atheros/pull/5), and for noticing that the `linux-headers-amd64` dependency could be noted in this README.
+Special thanks to @waveletlet ([their profile on github](https://github.com/waveletlet)) for having provided the merge request to add support for changes made to the kernel sources in version(s) [5.3](https://github.com/devrikx/atheros/pull/5), [5.5](https://github.com/devrikx/atheros/pull/6), and for noticing that the `linux-headers-amd64` dependency could be noted in this README.
 
 From what I understand the issue has to do with a few things, from a tweak to regulatory domain - to support for the EEPROM chipset used in devices such as the Samsung Galaxy Book 12.
 
 The original source (for kernel versions up to 4.18) was simply a modified version of jeremyb31's - updated for 4.17+ by replacing the `wil6210` directory with the updated one found in the [latest linux kernel source tree](https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.17.tar.xz).
 
-The latest is based on the respective kernel's sources.  This update is still functional with kernel version 5.3.
+The latest is based on the respective kernel's sources.  This update is still functional with kernel version 5.5.0-1.
 
 ## Instructions
 
@@ -49,13 +49,13 @@ Enter the newly checked out repository
 cd atheros
 ```
 
-Check out the branch for your kernel version. If you are using the latest kernel version available in Debian Buster (or from the `buster-backports` channel at the time of this writing), you can just use master. Otherwise, run the following command, replacing the xx with your minor kernel version (i.e. 15, 16, 17, etc).
+Check out the branch for your kernel version. If you are using the latest kernel version available in Debian Buster (or from the `buster-backports` channel at the time of this writing), you can just use master. Otherwise, run the following command, replacing the **X** with your *MAJOR* kernel version (i.e. *4*, *5*, etc), and the **y** with your *minor* kernel version (i.e. *15*, *16*, or *3*).
 
 ```bash
-git checkout 4-X-stable
+git checkout X-y-stable
 ```
 
-The remaining process depends upon whether this is your first time building the source, or whether you're rebuilding due to a kernel patch version update (i.e. 4.18.0 to 4.18.0-3).
+The remaining process depends upon whether this is your first time building the source, or whether you're rebuilding due to a kernel patch version update (i.e. 4.18.0 to 4.18.0-3, or 5.3.0 to 5.5.0-1).
 
 ### Preparing to Update
 
@@ -107,7 +107,7 @@ Please note that on Ubuntu, you probably need to prepend `/usr` to the paths use
 
 After you've rebooted your PC, you should have working wifi!
 
-This works for me (and other contributors) on the Samsung Galaxy Book 12, running Debian Buster with kernel version 5.3 (At the time this `README.md` was last updated.)
+This works for me (and other contributors) on the Samsung Galaxy Book 12, running Debian Buster with kernel version 5.5.0-1 (At the time this `README.md` was last updated.)
 
 Feel free to let me know how it works for you - though for serious issues I'd recommend you seek help by posting to the forums where @jeremyb31 provides the [original source and solution](https://ubuntuforums.org/showthread.php?t=2384640&page=4)
 
