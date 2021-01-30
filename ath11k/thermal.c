@@ -53,7 +53,7 @@ ath11k_thermal_set_cur_throttle_state(struct thermal_cooling_device *cdev,
 	return ret;
 }
 
-static struct thermal_cooling_device_ops ath11k_thermal_ops = {
+static const struct thermal_cooling_device_ops ath11k_thermal_ops = {
 	.get_max_state = ath11k_thermal_get_max_throttle_state,
 	.get_cur_state = ath11k_thermal_get_cur_throttle_state,
 	.set_cur_state = ath11k_thermal_set_cur_throttle_state,
@@ -174,8 +174,11 @@ int ath11k_thermal_register(struct ath11k_base *sc)
 		if (IS_ERR(cdev)) {
 			ath11k_err(sc, "failed to setup thermal device result: %ld\n",
 				   PTR_ERR(cdev));
-			return -EINVAL;
+			ret = -EINVAL;
+			goto err_thermal_destroy;
 		}
+
+		ar->thermal.cdev = cdev;
 
 		ret = sysfs_create_link(&ar->hw->wiphy->dev.kobj, &cdev->device.kobj,
 					"cooling_device");
@@ -184,7 +187,6 @@ int ath11k_thermal_register(struct ath11k_base *sc)
 			goto err_thermal_destroy;
 		}
 
-		ar->thermal.cdev = cdev;
 		if (!IS_REACHABLE(CONFIG_HWMON))
 			return 0;
 
